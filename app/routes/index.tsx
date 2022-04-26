@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useInterval } from '@mantine/hooks'
 
 export default function Index() {
-  const [seconds, setSeconds] = useState(0);
+  let [seconds, setSeconds] = useState(1500);
   const interval = useInterval(() => setSeconds((s) => s - 1), 1000);
 
   useEffect(() => {
@@ -15,10 +15,9 @@ export default function Index() {
     <>
       <AppShell
         padding="md"
-
         header={
           <Header p="xs">
-            <h1>TomatoTimer</h1>
+            <h1>VeggieTimer</h1>
           </Header>
         }
         styles={(theme) => ({
@@ -29,10 +28,10 @@ export default function Index() {
           <Button color="blue">
             Pomodoro
           </Button>
-          <Button color="blue" onClick={() => console.log('Short Break')}>
+          <Button color="blue" onClick={() => seconds=300}>
             Short Break
           </Button>
-          <Button color="blue" onClick={() => console.log('Long Break')}>
+          <Button color="blue" onClick={() => seconds=600}>
             Long Break
           </Button>
         </Group>
@@ -40,13 +39,13 @@ export default function Index() {
           <Title order={1}>{seconds}</Title>
         </Group>
         <Group position="center">
-          <Button color="green" onClick={interval.toggle} variant="light">
+          <Button color="green" onClick={interval.start} variant="light">
             Start
           </Button>
-          <Button color="red">
+          <Button color="red" onClick={interval.stop} variant="light">
             Stop
           </Button>
-          <Button variant="outline" onClick={() => console.log('hello world')}>
+          <Button variant="outline" onClick={() => seconds=1500}>
             Reset
           </Button>
         </Group>
