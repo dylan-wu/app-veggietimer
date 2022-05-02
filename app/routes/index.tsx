@@ -4,7 +4,7 @@ import { useInterval } from '@mantine/hooks'
 
 export default function Index() {
   let [seconds, setSeconds] = useState(1500);
-  const interval = useInterval(() => setSeconds((s) => s - 1), 1000);
+  const interval = useInterval(() => setSeconds((seconds) => seconds - 1), 1000);
 
   useEffect(() => {
     interval.start();
